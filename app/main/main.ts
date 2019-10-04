@@ -1,8 +1,8 @@
-const { format } = require('url')
+import { format } from 'url'
 
-const { BrowserWindow, app } = require('electron')
-const isDev = require('electron-is-dev')
-const { resolve } = require('app-root-path')
+import { BrowserWindow, app } from 'electron'
+import isDev from 'electron-is-dev'
+import { resolve } from 'app-root-path'
 
 app.on('ready', async () => {
   const mainWindow = new BrowserWindow({
@@ -25,7 +25,7 @@ app.on('ready', async () => {
   const url = isDev ? devPath : prodPath
 
   mainWindow.setMenu(null)
-  mainWindow.loadURL(url)
+  mainWindow.loadURL(url).then(() => { console.log('loaded') })
 })
 
 app.on('window-all-closed', app.quit)
