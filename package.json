@@ -1,7 +1,7 @@
 {
-  "name": "csm2",
-  "version": "2.0.0",
-  "description": "Cash shop manager",
+  "name": "electron-svelte-parcel-boilerplate",
+  "version": "1.0.0",
+  "description": "electron-svelte-parcel-bolierplate",
   "main": "app/main/.parcel/main.js",
   "scripts": {
     "start": "run-s main:build watch",
