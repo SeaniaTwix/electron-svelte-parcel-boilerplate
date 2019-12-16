@@ -1,15 +1,26 @@
 import App from './App.svelte';
 
-import crayon, {RouterEventType} from 'crayon'
-import svelte from 'crayon-svelte'
+import { Request, Response } from 'crayon/dist/platform/router';
+import { BaseApp, tab } from './lib/svelte-service'
 
-const app = crayon.create()
+class MyApp extends BaseApp {
+  private get outlet() {
+    return document.getElementById('root')
+  }
 
-const outlet = document.getElementById('root');
-app.use(svelte.router(outlet))
+  constructor() {
+    super()
+    this.use(this.outlet)
+  }
 
-app.path('/', (req, res) => {
-  res.mount(App, { req, nav: app })
-})
+  @tab('/')
+  main(req: Request, res: Response) {
+    res.mount(App, { req, nav: global })
+  }
+}
 
+// just simple name
+const global = MyApp.app
+
+const app = new MyApp()
 app.load().then()
