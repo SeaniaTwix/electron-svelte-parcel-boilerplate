@@ -1,32 +1,31 @@
 # Electron-Svelte-Parcel-Boilerplate
 
-with crayon router
+with crayon router 6
 
 ```ts
-import App from './App.svelte';
+import App from './App.svelte'
 
-import { Request, Response } from 'crayon/dist/platform/router';
-import { BaseApp, tab } from './lib/svelte-service'
+import {Context, Router} from 'crayon/dist/platform/router'
+import {BaseApp, CrayonSvelteMounter, tab} from './lib/svelte-service'
 
 class MyApp extends BaseApp {
-  private get outlet() {
+  private static get outlet() {
     return document.getElementById('root')
   }
 
   constructor() {
     super()
-    this.use(this.outlet)
+    this.use(MyApp.outlet)
   }
 
   @tab('/')
-  main(req: Request, res: Response) {
-    res.mount(App, { req, nav: global })
+  main(ctx: Context, mounter: CrayonSvelteMounter, router: Router) {
+    console.log(mounter.svelte.mounter)
+    ctx.mount(App, { ctx, nav: router })
   }
 }
 
-// just simple name
-const global = MyApp.app
-
 const app = new MyApp()
 app.load().then()
+
 ```
