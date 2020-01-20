@@ -11,6 +11,7 @@
     "jsx-boolean-value": false,
     "jsx-no-lambda": false,
     "no-console": false,
-    "curly": false
+    "curly": false,
+    "member-access": false
   }
 }

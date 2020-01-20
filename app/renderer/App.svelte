@@ -1,15 +1,16 @@
-<script>
+<script lang="ts">
   import { onMount } from 'svelte'
-  import ElectronService from './lib/electron-service';
+  import ElectronService from './lib/electron-service'
+  import {Context, Router} from 'crayon'
 
   const es = new ElectronService()
 
   onMount(() => {
-    console.log(req, nav)
+    console.log(ctx, nav)
   })
 
-  export let req
-  export let nav
+  export let ctx: Context
+  export let nav: Router
 </script>
 
-<p>Current Path is '{req.pathname}'</p>
+<p>Current Path is '{ctx.pathname}'</p>
