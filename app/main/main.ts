@@ -4,6 +4,8 @@ import { BrowserWindow, app } from 'electron'
 import isDev from 'electron-is-dev'
 import { resolve } from 'app-root-path'
 
+app.allowRendererProcessReuse = true
+
 app.on('ready', async () => {
   const mainWindow = new BrowserWindow({
     width: 800,
@@ -11,7 +13,7 @@ app.on('ready', async () => {
     show: false,
     webPreferences: {
       nodeIntegration: true
-    }
+    },
   })
 
   mainWindow.once('ready-to-show', () => {
