@@ -29,3 +29,9 @@ const app = new MyApp()
 app.load().then()
 
 ```
+
+## BUILD
+
+use `electron-builder`
+
+> electron-builder build {...options}
